@@ -5,7 +5,7 @@ import axios from "axios";
 
 import { API_URL } from "../constants";
 
-class NewDataForm extends React.Component {
+class EditDataForm extends React.Component {
   state = {
     pk: 0,
     data: ""
@@ -22,9 +22,9 @@ class NewDataForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  createData = e => {
+  editData = e => {
     e.preventDefault();
-    axios.post(API_URL, this.state).then(() => {
+    axios.put(API_URL + this.state.pk, this.state).then(() => {
       this.props.resetState();
       this.props.toggle();
     });
@@ -36,7 +36,7 @@ class NewDataForm extends React.Component {
 
   render() {
     return (
-      <Form onSubmit={this.createData}>
+      <Form onSubmit={ this.editData }>
         <FormGroup>
           <Label for="data">Data:</Label>
           <Input
@@ -52,4 +52,4 @@ class NewDataForm extends React.Component {
   }
 }
 
-export default NewDataForm;
+export default EditDataForm;

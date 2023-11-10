@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
-import NewDataModal from "./NewDataModal";
+import EditDataModal from "./EditDataModal";
 
 import ConfirmRemovalModal from "./ConfirmRemovalModal";
 
@@ -27,7 +27,7 @@ class DataList extends Component {
               <tr key={d.pk}>
                 <td>{d.data}</td>
                 <td align="center">
-                  <NewDataModal
+                  <EditDataModal
                     create={false}
                     data={d}
                     resetState={this.props.resetState}
